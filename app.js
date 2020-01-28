@@ -4,6 +4,8 @@ const API = require("./APISecrets")
 
 const geoCode = require("./utils/geocode")
 
+const forecast = require('./utils/forecast')
+
 
 // const weatherUrl = "https://api.darksky.net/forecast/9c0eb2fc8b0d0c20e73315c147dc71f8/37.8267,-122.4233"
 
@@ -36,10 +38,14 @@ const geoCode = require("./utils/geocode")
   
 // })
 
-
-
-geoCode("columbus", (err, data) => {
-  
-  console.log("err", err)
-  console.log("data", data)
+forecast("-83.0007", "39.9623", (err, data) => {
+  console.log(data)
 })
+
+
+
+// geoCode("columbus", (err, data) => {
+  
+//   console.log("err", err)
+//   console.log("data", data)
+// })
