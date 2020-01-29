@@ -38,14 +38,22 @@ const forecast = require('./utils/forecast')
   
 // })
 
-forecast("-83.0007", "39.9623", (err, data) => {
-  console.log(data)
-})
-
-
-
-// geoCode("columbus", (err, data) => {
-  
-//   console.log("err", err)
-//   console.log("data", data)
+// forecast("-83.0007", "39.9623", (err, data) => {
+//   console.log(`It is currently ${data.temperature}. With a ${data.chanceOfRain} chance of rain.`)
 // })
+
+
+
+geoCode(process.argv[2], (err, { latitude, longitude, location }) => {
+  if(err){
+    return console.log("err", err)
+  } 
+  
+  forecast(latitude, longitude, (err, forecastData) => {
+    if(err) {
+      return console.log(err)
+    }
+      console.log(location)
+      console.log(forecastData)
+    })
+})
